@@ -149,6 +149,40 @@ problem3Data(:, 4) = log(problem3Data(:, 2));
 % Find a functional description of these data.  Do this by creating four (linear-linear, semilogx, semilogy, log-log) 
 % subplots and inspecting said subplots for the most “linear”.
 
+figure(30);
+
+problem3aLinLin = subplot(2,2,1);
+plot(problem3Data(:, 1),problem3Data(:, 2),'*r' ,'Parent', problem3aLinLin);
+[]
+xlabel(problem3aLinLin, "X (Linear)");
+ylabel(problem3aLinLin, "Y (Linear)");
+title(problem3aLinLin, "Problem 3a Linear vs. Linear");
+grid(problem3aLinLin, 'on');
+
+
+problem3aLinLog = subplot(2,2,2);
+plot(problem3Data(:, 1),problem3Data(:, 4),'*r' , 'Parent', problem3aLinLog);
+xlabel(problem3aLinLog, "X (Linear)");
+ylabel(problem3aLinLog, "Y (Log)");
+title(problem3aLinLog, "Problem 3a Linear vs. Linear");
+grid(problem3aLinLog, 'on');
+
+
+problem3aLogLin = subplot(2,2,3);
+plot(problem3Data(:, 3),problem3Data(:, 2),'*r' , 'Parent', problem3aLogLin);
+xlabel(problem3aLogLin, "X (Log)");
+ylabel(problem3aLogLin, "Y (Linear)");
+title(problem3aLogLin, "Problem 3a Linear vs. Linear");
+grid(problem3aLogLin, 'on');
+
+
+problem3aLogLog = subplot(2,2,4);
+plot(problem3Data(:, 3),problem3Data(:, 4),'*r' , 'Parent', problem3aLogLog);
+xlabel(problem3aLogLog, "X (Log)");
+ylabel(problem3aLogLog, "Y (Log)");
+title(problem3aLogLog, "Problem 3a Linear vs. Linear");
+grid(problem3aLogLog, 'on');
+
 %% Problem 3b
 % Plot the function and the data on the same plot.
 
@@ -165,4 +199,6 @@ problem3Data(:, 4) = log(problem3Data(:, 2));
 
 Temperature and Bearing Life Data for Problem 4  
 
-% Create a table of the given data using fprintf. Your output table should have two columns: one column with the “Temperature” heading and one with the “Bearing Life” heading, including units, of course.  Include the estimated bearing life at 150°F in the table. Your table should be properly formatted for output in the published (pdf) file.
+% Create a table of the given data using fprintf. Your output table should have two columns: one column with the 
+% “Temperature” heading and one with the “Bearing Life” heading, including units, of course.  Include the estimated 
+% bearing life at 150°F in the table. Your table should be properly formatted for output in the published (pdf) file.
