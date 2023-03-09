@@ -1,6 +1,9 @@
 %% Assignment 7
 % Ethan Vosburg 
 
+clear
+clc
+
 %% Problem 1
 % Allow the variable “t” to vary over the range 0 to 10π with increments of π/50.  
 % Plot the following equations on an x-y-z orthogonal axis system.
@@ -153,43 +156,60 @@ figure(30);
 
 problem3aLinLin = subplot(2,2,1);
 plot(problem3Data(:, 1),problem3Data(:, 2),'*r' ,'Parent', problem3aLinLin);
-[]
-xlabel(problem3aLinLin, "X (Linear)");
-ylabel(problem3aLinLin, "Y (Linear)");
+xlabel(problem3aLinLin, "Time (Linear Seconds)");
+ylabel(problem3aLinLin, "Temperature (Linear °C)");
 title(problem3aLinLin, "Problem 3a Linear vs. Linear");
 grid(problem3aLinLin, 'on');
 
 
 problem3aLinLog = subplot(2,2,2);
 plot(problem3Data(:, 1),problem3Data(:, 4),'*r' , 'Parent', problem3aLinLog);
-xlabel(problem3aLinLog, "X (Linear)");
-ylabel(problem3aLinLog, "Y (Log)");
-title(problem3aLinLog, "Problem 3a Linear vs. Linear");
+xlabel(problem3aLinLog, "Time (Linear Seconds)");
+ylabel(problem3aLinLog, "Temperature (Log °C)");
+title(problem3aLinLog, "Problem 3a Linear vs. Log");
 grid(problem3aLinLog, 'on');
 
 
 problem3aLogLin = subplot(2,2,3);
 plot(problem3Data(:, 3),problem3Data(:, 2),'*r' , 'Parent', problem3aLogLin);
-xlabel(problem3aLogLin, "X (Log)");
-ylabel(problem3aLogLin, "Y (Linear)");
-title(problem3aLogLin, "Problem 3a Linear vs. Linear");
+xlabel(problem3aLogLin, "Time (Log Seconds)");
+ylabel(problem3aLogLin, "Temperature (Linear °C)");
+title(problem3aLogLin, "Problem 3a Log vs. Linear");
 grid(problem3aLogLin, 'on');
 
 
 problem3aLogLog = subplot(2,2,4);
 plot(problem3Data(:, 3),problem3Data(:, 4),'*r' , 'Parent', problem3aLogLog);
-xlabel(problem3aLogLog, "X (Log)");
-ylabel(problem3aLogLog, "Y (Log)");
-title(problem3aLogLog, "Problem 3a Linear vs. Linear");
+xlabel(problem3aLogLog, "Time (Log Seconds)");
+ylabel(problem3aLogLog, "Temperature (Log °C)");
+title(problem3aLogLog, "Problem 3a Log vs. Log");
 grid(problem3aLogLog, 'on');
 
 %% Problem 3b
 % Plot the function and the data on the same plot.
 
+figure(31);
+problem3bFig = axes();
+problem3bFit = polyfit(problem3Data(:, 1),problem3Data(:, 4),1);
+hold(problem3bFig, 'on')
+plot(problem3Data(:, 1),problem3Data(:, 2),'*r' ,'Parent', problem3bFig);
+fplot(@(x) exp(problem3bFit(2))*exp(problem3bFit(1)*x),[min(problem3Data(:, 1)), max(problem3Data(:, 1))] ,'b' ,'Parent', problem3bFig);
+xlabel(problem3bFig, "Time (Linear Seconds)");
+ylabel(problem3bFig, "Temperature (Linear °C)");
+title(problem3bFig, "Problem 3b Best Fit Plot");
+grid(problem3bFig, 'on');
+
 %% Problem 3c
 % Create a table of the given data using fprintf. Your output table should have two columns: one column with the “Time” 
 % heading and one with the “Temp” heading, including units, of course.  Your table should be properly formatted for 
 % output in the published (pdf) file.
+
+problem3cPrintData(1, :) = [problem3Data(:, 1)'];
+problem3cPrintData(2, :) = [problem3Data(:, 4)'];
+
+fprintf('%-9s %15s\r\n',' Time(s)',' Temperature(°C)');
+fprintf('%9s %15s\r\n','---------','-----------------');
+fprintf('% -09.2f % -15.2f\r\n', problem3cPrintData);
 
 %% Problem 4
 % The useful life of a machine bearing depends on its operating temperature (see data).  Obtain a functional description 
@@ -197,8 +217,34 @@ grid(problem3aLogLog, 'on');
 % the independent variable on the horizontal axis).  Use your plot and function to estimate the bearing’s life if it 
 % operates at 150°F.
 
-Temperature and Bearing Life Data for Problem 4  
+problem4Data(:, 1) = (100:20:220);
+problem4Data(:, 2) = [28, 21, 15, 11, 8, 6, 4];
+problem4Data(:, 3) = log(problem4Data(:, 2));
+
+
+figure(40);
+problem4fig = axes();
+hold(problem4fig, 'on');
+grid(problem4fig, 'on');
+problem4Fit = polyfit(problem4Data(:, 1), problem4Data(:, 3), 1);
+problem4Function = @(x) exp(problem4Fit(2))*exp(problem4Fit(1)*x);
+
+plot(problem4Data(:, 1), problem4Data(:, 2),'*r' ,'Parent', problem4fig);
+fplot(problem4Function,[min(problem4Data(:, 1)), max(problem4Data(:, 1))] ,'b' ,'Parent', problem4fig);
+xlabel(problem4fig, "Temperature (Linear °F)");
+ylabel(problem4fig, "Useful Life (Linear 1000hours)");
+title(problem4fig, "Problem 3b Best Fit Plot");
 
 % Create a table of the given data using fprintf. Your output table should have two columns: one column with the 
 % “Temperature” heading and one with the “Bearing Life” heading, including units, of course.  Include the estimated 
 % bearing life at 150°F in the table. Your table should be properly formatted for output in the published (pdf) file.
+
+problem4PrintData = zeros(2,8);
+
+problem4PrintData(1, :) = [problem4Data(1:3, 1)' 150 problem4Data(4:end, 1)'];
+problem4PrintData(2, :) = exp(polyval(problem4Fit, problem4PrintData(1, :)));
+
+fprintf('%-9s %15s\r\n',' Time(s)',' Temperature(°F)');
+fprintf('%9s %15s\r\n','---------','-----------------');
+fprintf('% -09.2f % -15.2f\r\n', problem4PrintData);
+
