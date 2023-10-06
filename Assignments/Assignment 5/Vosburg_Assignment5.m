@@ -108,7 +108,7 @@ volume = 500; % m^3
 
 % Solving for height
 % height = ((volume-(2/3*pi*R^3))/((pi*R^2)));
-solve(((500-(2/3*pi*R^3))/((pi*R^2))), R, 'MaxDegree', 3)
+solve(((volume-(2/3*pi*R^3))/((pi*R^2))), R, 'MaxDegree', 3)
 
 %% Problem 5
 %

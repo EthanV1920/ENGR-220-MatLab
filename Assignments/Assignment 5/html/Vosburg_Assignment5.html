@@ -1,0 +1,137 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Vosburg_Assignment5</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-13"><meta name="DC.source" content="Vosburg_Assignment5.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1></h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Assignment 1</a></li><li><a href="#2">Problem 1</a></li><li><a href="#3">Problem 2</a></li><li><a href="#4">Block Equation</a></li></ul></div><h2 id="1">Assignment 1</h2><h2 id="2">Problem 1</h2><pre class="codeinput"><span class="comment">%   The surface to volume ratio of the earth is 7.5753 x 10-4 miles-1.</span>
+<span class="comment">%   Determine an approximate diameter for the earth.</span>
+clc;    <span class="comment">% Clear command window</span>
+clear;  <span class="comment">% Clear workspace</span>
+
+<span class="comment">% Calculate the surface to volume ration conversion factor</span>
+surfToVol = 7.5753e-4;  <span class="comment">% mile^-1</span>
+
+<span class="comment">%Calculate the diameter of the earth</span>
+earthDiameter = 6/surfToVol;    <span class="comment">% miles</span>
+
+fprintf(<span class="string">"The approximate diameter of the earth if: %4.0f miles\n"</span>, earthDiameter);
+</pre><pre class="codeoutput">The approximate diameter of the earth if: 7920 miles
+</pre><h2 id="3">Problem 2</h2><pre class="codeinput"><span class="comment">%   The length L of a belt that traverses two pulley wheels, one of radius</span>
+<span class="comment">%   R and one of radius r and whose centers are distance S apart is given by</span>
+</pre><h2 id="4">Block Equation</h2><p>$$L = 2S cos(%theta) + %pi(R + r) + 2%theta(R - r); " Where " %theta =  sin^-1((R -r)/S)$$</p><pre class="error">Error updating Text.
+
+ String scalar or character vector must have valid interpreter syntax: 
+$$L = 2S cos(</pre><pre class="codeinput"><span class="comment">% &lt;latex&gt;</span>
+<span class="comment">% \begin{tabular}{|r|r|}</span>
+<span class="comment">% \hline $n$&amp;$n!$\\</span>
+<span class="comment">% \hline 1&amp;1\\ 2&amp;2\\ 3&amp;6\\</span>
+<span class="comment">% \hline</span>
+<span class="comment">% \end{tabular}</span>
+<span class="comment">% &lt;/latex&gt;</span>
+<span class="comment">%</span>
+
+<span class="comment">%   Determine L when R = 30 cm, r =12 cm, and S =50 cm. (Remember: MATLAB likes angles in radians).</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%% Assignment 1
+
+%%  Problem 1
+
+%   The surface to volume ratio of the earth is 7.5753 x 10-4 miles-1. 
+%   Determine an approximate diameter for the earth.
+clc;    % Clear command window
+clear;  % Clear workspace
+
+% Calculate the surface to volume ration conversion factor 
+surfToVol = 7.5753e-4;  % mile^-1
+
+%Calculate the diameter of the earth
+earthDiameter = 6/surfToVol;    % miles
+
+fprintf("The approximate diameter of the earth if: %4.0f miles\n", earthDiameter);
+
+%%  Problem 2
+
+%   The length L of a belt that traverses two pulley wheels, one of radius
+%   R and one of radius r and whose centers are distance S apart is given by 
+
+%% Block Equation
+%
+% $$L = 2S cos(%theta) + %pi(R + r) + 2%theta(R - r); " Where " %theta =  sin^-1((R -r)/S)$$
+
+% <latex>
+% \begin{tabular}{|r|r|}
+% \hline $n$&$n!$\\ 
+% \hline 1&1\\ 2&2\\ 3&6\\ 
+% \hline
+% \end{tabular}
+% </latex>
+%
+
+%   Determine L when R = 30 cm, r =12 cm, and S =50 cm. (Remember: MATLAB likes angles in radians).
+##### SOURCE END #####
+--></body></html>
