@@ -52,13 +52,13 @@ end
 
 %% Problem 3
 % The electricity accounts of residents in a very small town are calculated as follows:
-%
+
 % If 500 units or fewer are used, the cost is 2 cents per unit.
 % If more than 500 but not more than 1000 units are used, the cost is $10 for the first 500 units and 5 cents for every unit in excess of 500.
 % If more than 1000 units are used, the cost is $35 for the first 1000 units plus 10 cents for every unit in excess of 1000.
 % A basic service fee of $5 is charged no matter how much electricity is used.
 % Write a program that enters the following five consumptions into a vector and uses a “for loop” to calculate and display the total charge for each one:
-%
+
 % Consumption levels: 200, 500, 700, 1000, 1500 units.
 
 consumption = [200, 500, 700, 1000, 1500];
